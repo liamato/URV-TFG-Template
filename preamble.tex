@@ -1,0 +1,189 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[catalan, spanish, english]{babel}
+
+\usepackage{amsmath}
+
+\usepackage[compact]{titlesec}
+\usepackage{titling}
+\usepackage[titletoc]{appendix}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {imgs/} }
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,er,positioning,arrows.meta}
+\tikzstyle{arrow} = [->,-Latex]
+\tikzstyle{darrow} = [double,->,-{Latex[open]}]
+
+\usepackage{hyperref}
+
+\usepackage{float}
+% \floatstyle{plaintop}
+% \restylefloat{table}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tablefootnote}
+
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{pmboxdraw}
+
+% Hack for minted to disable error boxes:
+% https://tex.stackexchange.com/a/504621
+\makeatletter
+\AtBeginEnvironment{noerr}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+\newenvironment{noerr}{}
+
+\AtBeginEnvironment{appendices}{
+    \titleformat
+    {\section} % command
+    % [display] % shape
+    % {\bfseries\large\selectlanguage{catalan}} % format
+    {\bfseries\large} % format
+    {\appendixname~\thesection:} % label
+    {-15ex} % sep
+    {\newline} % before-code
+    [] % after-code
+
+    \renewcommand{\sectionmark}[1]{\markboth{\appendixname~\thesection: #1}{#1}}
+}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+% \usepackage{apacite}
+\usepackage[square,numbers,sort&compress]{natbib}
+% \bibliographystyle{apacite}
+
+\usepackage[nodayofweek,level]{datetime}
+
+\usepackage{ragged2e}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyfoot[C]{\thepage}
+
+\rhead{\nouppercase{\leftmark}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyheadoffset{0pt}
+\fancyfootoffset{0pt}
+
+% Set margin and paper type
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=30mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
+    headheight=15pt,
+    % showframe,
+}
+
+
+% Set section style
+\titleformat
+{\section} % command
+% [display] % shape
+{\bfseries\large} % format
+{\thesection} % label
+{1ex} % sep
+{} % before-code
+[] % after-code
+
+% Set subsection style
+\titleformat
+{\subsection} % command
+% [display] % shape
+{\bfseries\normalsize} % format
+{\thesubsection} % label
+{1ex} % sep
+{} % before-code
+[] % after-code
+
+% Set subsubsection style
+\titleformat
+{\subsubsection} % command
+% [display] % shape
+{\bfseries\normalsize\itshape} % format
+{\thesubsubsection} % label
+{1ex} % sep
+{} % before-code
+[] % after-code
+
+% \setlength{\belowcaptionskip}{-10pt}
+% \setlength{\intextsep}{0pt}
+\captionsetup{labelfont=bf, textfont={}, font=small, belowskip=-0.5em}%, aboveskip=0em}
+
+% \definecolor{bg}{rgb}{0.965,0.965,0.965}
+\definecolor{bg}{rgb}{1,1,1}
+\definecolor{highlight}{rgb}{1,0.98,0.85}
+\setminted{
+    fontsize=\small,
+    bgcolor=bg,
+    highlightcolor=highlight,
+    linenos,
+    frame=lines,
+    framesep=3\fboxsep,
+    framerule=0.2pt,
+    % xleftmargin=5mm
+}
+
+
+\fontfamily{ptm}\selectfont
+
+
+
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{0pt}{}
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0.6em}
+% \titlespacing{\section}{0pt}{*1}{*0.1}
+\titlespacing{\section}{0pt}{1em}{0.5em}
+\titlespacing{\subsection}{0pt}{0.8em}{0em}
+\titlespacing{\subsubsection}{0pt}{0.8em}{0em}
+
+% \setcounter{secnumdepth}{6}
+
+\usepackage{subfiles}
+
+
+
+
+\hypersetup{
+    colorlinks=true,
+    % linkcolor=blue,
+    % linkcolor=cyan,
+    % linkcolor=Purple,
+    % filecolor=magenta,
+    % filecolor=cyan,
+    % urlcolor=Aquamarine,
+    % urlcolor=RedViolet,
+    % citecolor=OliveGreen,
+    % citecolor=Peach,
+    allcolors=RedViolet,
+    %
+    % pdftitle={\tfgTitle},
+    % pdfauthor={\tfgAuthor},
+    % pdfcreator={LaTeX},
+    % pdfkeywords={\tfgKeywords},
+    %
+    naturalnames=true,
+    %
+    unicode=true,
+    breaklinks=true,
+    linktoc=all, % adds links to both title and page number on the toc
+    % hidelinks, % removes link colors
+}
+
+\usepackage{lipsum}

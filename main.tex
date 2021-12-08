@@ -1,0 +1,79 @@
+\documentclass [12pt]{article}
+
+% !TEX options = -synctex=1 -interaction=nonstopmode -shell-escape -file-line-error "%DOC%"
+
+
+\input{preamble.tex}
+
+
+\begin{document}
+
+\input{post-preamble.tex}
+
+\subfile{sections/titlepage}
+
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+\subfile{sections/index}
+
+\setlength{\parskip}{0.6em}
+
+
+\subfile{sections/abstract}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ------------------------------------------------------------------
+
+
+\newpage
+
+% Only as an example, remove/comment on the final document
+\subfile{sections/examples.tex}
+
+
+% \subfile{sections/introduction}
+
+% \newpage
+
+% \subfile{sections/general_description}
+
+% \newpage
+
+% \subfile{sections/requirements}
+
+% \newpage
+
+% \subfile{sections/functional_requirements}
+
+% \newpage
+
+% \subfile{sections/design}
+
+% \newpage
+
+% \subfile{sections/implementation}
+
+
+% \newpage
+
+% \subfile{sections/evaluation}
+
+% \newpage
+
+% \subfile{sections/conclusions}
+
+\newpage
+\subfile{sections/bibliography}
+
+\begin{appendices}
+    \section{Apendix example}
+    % \subfile{sections/apendix1}
+
+    % \subfile{sections/apendix2}
+\end{appendices}
+
+\end{document}

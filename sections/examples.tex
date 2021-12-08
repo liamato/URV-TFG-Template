@@ -1,0 +1,193 @@
+\section{Example title}
+\subsection{Example subtitle}
+\subsubsection{Example subsubtitle}
+
+
+\section{Text examples}
+Example text example text example text example text example text example text example text
+example text example text example text example text example text example text example text
+example text example text example text example text example text example text example text
+
+
+\subsection{Bold \& italic text}
+\textbf{Bold text}
+
+\textit{Italic text}
+
+\subsection{In document refernces}
+\autoref{eq:1}
+
+\subsection{Other documents refernce}
+referenced text\cite{examplewebsite}
+
+
+\subsection{Acronyms \& footnotes}
+
+ACRONYM\footnote{Acronym text}
+
+Footnote\footnote{Footnote text}
+
+\subsection{Hyperlinks / URLs}
+Exemple of \href{https://example.com}{named hyperlink}
+
+\newpage
+
+\section{Example lists}
+\subsection{Unordered list}
+\begin{itemize}
+    \item Item
+    \item Item
+    \item Item
+\end{itemize}
+
+\subsection{Ordered list}
+\begin{enumerate}
+    \item Item
+    \item Item
+    \item Item
+\end{enumerate}
+
+\section{Equation example}
+\begin{equation}\label{eq:1}
+    a^b = c
+\end{equation}
+
+\section{Table example}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{13.4cm}{
+        >{\centering\arraybackslash}m{1.7cm} |
+        >{\centering\arraybackslash}m{2cm} |
+        >{\centering\arraybackslash}m{2cm} |
+        >{\centering\arraybackslash}m{2.5cm} |
+        >{\centering\arraybackslash}m{3cm} }
+
+                & API\newline Disponible & API\newline Obsoleta & Dificultat & Característiques\newline avançades \\
+        \hline
+
+        Camera  & 1                      & 21                   & Senzilla   & No                                 \\
+        CameraX & 21                     & N/A                  & Senzilla   & Sí\footnotemark                    \\
+        Camera2 & 21                     & N/A                  & Complexa   & Sí
+    \end{tabularx}
+
+    \caption{Comparativa d'APIs de càmera}
+    \label{tab:1}
+\end{table}
+
+\newpage
+
+
+\section{Image example}
+\begin{figure}[h!]
+    % \begin{figure}[H] % Alternative positioning
+    \centering % sempre
+    \includegraphics[scale=0.11]{urv-apilat-color.eps}
+    \caption{Logo URV} % sempre
+    \label{fig:my_label}
+\end{figure}
+
+\vspace{50pt}
+
+\section{Code snippet example}
+For all minted listings is required to enable \textit{-shell-escape} on the \LaTeX{} executable and have pygments installed
+\begin{listing}[H]
+    \begin{minted}
+    [
+        autogobble,
+        breaklines,
+        breakautoindent,
+        % highlightlines={1, 3-4},
+        linenos
+    ]
+    {python}
+    import numpy as np
+
+    def incmatrix(genl1,genl2):
+        m = len(genl1)
+        n = len(genl2)
+        M = None #to become the incidence matrix
+        VT = np.zeros((n*m,1), int)  #dummy variable
+
+        #compute the bitwise xor matrix
+        M1 = bitxormatrix(genl1)
+        M2 = np.triu(bitxormatrix(genl2),1)
+    ...
+    \end{minted}
+
+    \caption{Code example}
+    \label{listing:1}
+\end{listing}
+\newpage
+
+\section{Diagram examples}
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[auto,node distance=0.8cm]
+        \node[entity] (frame) [text width=2.5cm,text centered] {Obtenció del fotograma};
+        \node[entity] (process) [right = of frame, text width=2.5cm,text centered] {Processament};
+        \node[entity] (modify) [right = of process,text width=2.5cm,text centered] {Modificació del fotograma};
+        \node[entity] (viz) [right = of modify, text width=2.3cm,text centered] {Visualització};
+
+        \draw[arrow] (frame) -- (process);
+        \draw[arrow] (process) -- (modify);
+        \draw[arrow] (modify) -- (viz);
+    \end{tikzpicture}
+    \caption{Projecte workflow}
+    \label{fig:project_workflow}
+\end{figure}
+
+\vspace{20pt}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[auto,node distance=1cm]
+        \node[entity] (app) {Aplicació};
+        \node[attribute] (app_native) [below of = app, yshift=-1cm, text width=2.8cm,text centered] {Codi natiu de l'aplicació};
+
+        \draw[arrow] (app_native) -- (app);
+
+        \node[attribute] (lib_native) [right = of app_native, text width=2.8cm,text centered] {Codi natiu de la llibreria};
+        \node[entity] (lib) [above = of lib_native, yshift = -.3cm] {Llibreria};
+        \draw[arrow] (lib_native) -- (lib);
+
+        \draw[darrow] (app) -- (lib);
+    \end{tikzpicture}
+    \caption{Module dependency}
+    \label{fig:module_dependency}
+\end{figure}
+
+\vspace{20pt}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[auto,node distance=0.8cm]
+        \node[attribute] (camera) {Camera};
+        \node[entity] (img_bin) [below of= camera, yshift=-0.8cm] {Image binarization};
+        \node[entity] (lane_follow) [below = of img_bin] {Lane follower};
+        \node[entity] (act_comm) [below = of lane_follow, text width=2.8cm,text centered] {Actuators communication};
+        \node[entity] (act_drv) [below = of act_comm, text width=2.8cm,text centered] {Actuators driver};
+        \node[attribute] (steer) [below = of act_drv, xshift=-1.5cm] {Steering};
+        \node[attribute] (vel) [below = of act_drv, xshift=1.5cm]{Velocity};
+
+        \node[attribute] (lidar) [right = of camera, xshift=0.3cm] {Lidar};
+        \node[entity] (auto_stop) [below = of lidar, right= of lane_follow] {Auto stop};
+        \node[entity] (base_speed) [below = of auto_stop, right = of act_comm] {Base speed};
+
+        \draw[arrow] (camera) -- (img_bin);
+        \draw[arrow] (lidar) -- (auto_stop);
+        \draw[arrow] (img_bin) -- (lane_follow);
+        \draw[arrow] (lane_follow) -- (auto_stop);
+        \draw[arrow] (base_speed) -- (act_comm);
+        \draw[arrow] (lane_follow) -- (act_comm);
+        \draw[arrow] (auto_stop) -- (act_comm);
+        \draw[arrow] (act_comm) -- (act_drv);
+        \draw[arrow] (act_drv) -- (steer);
+        \draw[arrow] (act_drv) -- (vel);
+    \end{tikzpicture}
+    \caption{Car nodes layout}
+    \label{fig:car_nodes}
+\end{figure}
+
+\pagebreak
+% a\cite{1} v \cite{einstein} \cite{knuthwebsite} \cite{knuth-fa}
