@@ -2,6 +2,9 @@
 
 A base document written in **LaTeX** following the design guides of URV for the _**T**reball de **F**inal de **G**rau_.
 
+It's also available as a template in [**Overleaf**](https://www.overleaf.com/latex/templates/urv-tfg-template/fmwwrpjwdwtq).
+
+
 ## Structure
 
 ```
@@ -29,3 +32,4 @@ URV-TFG-Template
 Modify the `config.tex` to setup the variables (author name, project title, director name, ...) and the default language of the project.
 
 It's recommended to create the new sections as new files un the sections folder to maintain the structure, although it's not enforced.
+
